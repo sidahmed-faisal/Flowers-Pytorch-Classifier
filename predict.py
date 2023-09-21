@@ -88,7 +88,7 @@ def predict(image_path, model, topk,category_names):
     with torch.no_grad():
         output = model(image)
         ps = torch.exp(output)
-        top_ps, top_classes = ps.topk(5, dim=1)
+        top_ps, top_classes = ps.topk(topk, dim=1)
         idx_to_class = {value:cat_to_name[key] for key, value in model.class_to_idx.items()}
         predicted_flowers = [idx_to_class[i] for i in top_classes.tolist()[0]]
         predicted_probabilities = top_ps.tolist()[0]
