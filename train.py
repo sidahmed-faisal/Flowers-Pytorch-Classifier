@@ -94,7 +94,7 @@ def create_model(arch,hidden_units,gpu,learning_rate):
     
     model.classifier = classifier
     
-    if args.gpu=='gpu':
+    if gpu=='gpu':
         device = torch.device("cuda")
     else:
         device = torch.device("cpu")
