@@ -40,7 +40,7 @@ def load_checkpoint(checkpoint_path):
     # freeze model parameters
     for param in model.parameters():
         param.requires_grad = False
-    model.input_units = checkpoint['input_units']
+    model.arch = checkpoint['arch']
     model.output_units = checkpoint['output_units']
     model.learning_rate = checkpoint['learning_rate']
     model.classifier = checkpoint['classifier']

@@ -162,10 +162,9 @@ def training(epochs,model,optimizer,train_dataloader,valid_dataloader,device):
     
 
     
-def save_checkpoint(model,arch,optimizer,save_dir,lr,epochs,train_dataset):
+def save_checkpoint(model,optimizer,save_dir,lr,epochs,train_dataset):
     model.class_to_idx = train_dataset.class_to_idx
     checkpoint = {'arch':arch,
-                  'input_units': model.input_units,
                   'output_units': 102,
                   'learning_rate': lr,
                   'classifier': model.classifier,
@@ -211,7 +210,7 @@ lr = args.learning_rate
 save_dir = args.save_dir
 
 
-model , optimizer, device = create_model(arch,hidden_units,gpu,lr)
+model , optimizer, device= create_model(arch,hidden_units,gpu,lr)
 print(model)
 print(device)
 
