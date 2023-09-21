@@ -76,7 +76,7 @@ def predict(image_path, model, topk,category_names):
     image = image.unsqueeze_(0)
     image = image.float()
     
-    if args.gpu=='gpu':
+    if gpu==True and torch.cuda.is_available():
         device = torch.device("cuda")
     else:
         device = torch.device("cpu")

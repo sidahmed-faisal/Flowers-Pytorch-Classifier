@@ -28,7 +28,7 @@ def get_input_args():
     parser.add_argument ('--learning_rate', help = 'learning rate', type = float, default = 0.001)
     parser.add_argument ('--hidden_units', help = 'hidden units ', type = int, default = 1000)
     parser.add_argument ('--epochs', help = 'number of epochs', type = int, default = 5)
-    parser.add_argument ('--gpu', help = "Input device you if you want to use it", type = str,default='cpu',choices=['gpu', 'cpu'])
+    parser.add_argument ('--gpu',dest='gpu', help = "specify if you want to choose gpu or not", action='store_true')
 
     return parser.parse_args()
 
@@ -94,7 +94,7 @@ def create_model(arch,hidden_units,gpu,learning_rate):
     
     model.classifier = classifier
     
-    if gpu=='gpu':
+    if gpu==True and torch.cuda.is_available():
         device = torch.device("cuda")
     else:
         device = torch.device("cpu")
@@ -162,7 +162,7 @@ def training(epochs,model,optimizer,train_dataloader,valid_dataloader,device):
     
 
     
-def save_checkpoint(model,arch,optimizer,save_dir,lr,epochs,):
+def save_checkpoint(model,arch,optimizer,save_dir,lr,epochs,train_dataset):
     model.class_to_idx = train_dataset.class_to_idx
     checkpoint = {'arch':arch,
                   'input_units': model.input_units,
@@ -219,5 +219,5 @@ print(device)
 training(epochs,model,optimizer,train_dataloader,valid_dataloader,device)
 
 
-save_checkpoint(model,arch,optimizer,save_dir,lr,epochs)
+save_checkpoint(model,arch,optimizer,save_dir,lr,epochs,train_dataset)
 
