@@ -162,7 +162,7 @@ def training(epochs,model,optimizer,train_dataloader,valid_dataloader,device):
     
 
     
-def save_checkpoint(model,optimizer,save_dir,lr,epochs,train_dataset):
+def save_checkpoint(model,arch,optimizer,save_dir,lr,epochs,train_dataset):
     model.class_to_idx = train_dataset.class_to_idx
     checkpoint = {'arch':arch,
                   'output_units': 102,
