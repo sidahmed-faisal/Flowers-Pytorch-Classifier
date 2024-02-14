@@ -1,3 +1,6 @@
-# AI Programming with Python Project
+# Image Classifier using VGG16 CNN architecture 
 
-Project code for Udacity's AI Programming with Python Nanodegree program. In this project, students first develop code for an image classifier built with PyTorch, then convert it into a command line application.
+- Image Classifier using Pytorch with **VGG16** architecture to classify 102 types of images and dynamic options of training by specifying parameters using training and prediction Python scripts
+
+
+
